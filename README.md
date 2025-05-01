@@ -1,7 +1,7 @@
 
 # Kafka Local Files Uploader
 
-**Monitors a Local directory** and **uploads new files to an Apache Kafka topic**, encoding them in Base64.
+**Monitors a Local directory** and **produces new files to an Apache Kafka topic**, encoding them in Base64.
 
 ## Features
 
