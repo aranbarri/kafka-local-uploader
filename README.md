@@ -49,7 +49,7 @@ modifySentFileNames=true
 Run the application:
 
 ```bash
-java -jar KafkaUploader.jar config.properties
+java -jar KafkaUploader.jar /path/to/config.properties
 ```
 
 ### Notes:
