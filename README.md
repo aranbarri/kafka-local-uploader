@@ -9,6 +9,8 @@ A Java-based tool to **monitor a local directory** and **upload new files to an 
 - Encodes file content as Base64 and sends to a Kafka topic.
 - Automatically renames files after upload (optional).
 - Ignores `.ignore` and `.uploaded` files.
+- Graceful shutdown handling.
+
 ---
 
 ## 🚀 Getting Started
@@ -17,33 +19,10 @@ A Java-based tool to **monitor a local directory** and **upload new files to an 
 
 - Java 8 or higher
 - Apache Kafka cluster
-- Kafka client libraries (configured via Maven or manually)
-- [Apache Commons IO](https://commons.apache.org/proper/commons-io/) (for `FileUtils`)
 
-### Compile
+### Installation
 
-If you're using Maven, include:
-
-```xml
-<dependencies>
-  <dependency>
-    <groupId>org.apache.kafka</groupId>
-    <artifactId>kafka-clients</artifactId>
-    <version>3.6.0</version>
-  </dependency>
-  <dependency>
-    <groupId>commons-io</groupId>
-    <artifactId>commons-io</artifactId>
-    <version>2.11.0</version>
-  </dependency>
-</dependencies>
-```
-
-Then compile:
-
-```bash
-mvn clean package
-```
+An executable `.jar` file is provided. No need to build from source or use Maven.
 
 ---
 
@@ -70,7 +49,7 @@ modifySentFileNames=true
 Run the application:
 
 ```bash
-java -cp target/your-jar-with-dependencies.jar main.KafkaUploader config.properties
+java -jar KafkaUploader.jar config.properties
 ```
 
 ### Notes:
