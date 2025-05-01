@@ -59,14 +59,6 @@ java -jar KafkaUploader.jar /path/to/config.properties
 
 ---
 
-##  Shutdown & Cleanup
-
-- App listens for shutdown signals (e.g., Ctrl+C).
-- Ensures the Kafka producer and watcher service are gracefully closed.
-- Files that are uploaded can be renamed (e.g., `myfile.txt` → `myfile.txt.uploaded`).
-
----
-
 ##  Ignored Files
 
 The following files are skipped:
