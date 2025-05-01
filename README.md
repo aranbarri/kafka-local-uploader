@@ -1,5 +1,5 @@
 
-# KafkaUploader
+# Kafka Local Files Uploader
 
 A Java-based tool to **monitor a local directory** and **upload new files to an Apache Kafka topic**, encoding them in Base64.
 
