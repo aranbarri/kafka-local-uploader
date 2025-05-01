@@ -18,12 +18,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class KafkaUploader 
 {
-
-	String bootstrapServers;
-	String topic;
-	String watchDir;
-	boolean modifySentFileNames;
-	Properties config;
+    String bootstrapServers;
+    String topic;
+    String watchDir;
+    boolean modifySentFileNames;
+    Properties config;
+    
     private static final AtomicBoolean running = new AtomicBoolean(true);
     WatchService watchService;
     KafkaProducer<String, String> producer;
@@ -31,25 +31,23 @@ public class KafkaUploader
     public KafkaUploader(String propertiesPath) throws IOException
     {
         config = new Properties();
-		config.load(new FileInputStream(propertiesPath));
+	config.load(new FileInputStream(propertiesPath));
        
-		bootstrapServers = config.getProperty("bootstrap.servers");
+	bootstrapServers = config.getProperty("bootstrap.servers");
         topic = config.getProperty("topic.name");
         watchDir = config.getProperty("watch.folder");
         modifySentFileNames = config.getProperty("modifySentFileNames").equalsIgnoreCase("true");
     }
    
     public static void main(String[] args) throws IOException, InterruptedException
-    {
-    	
+    {    	
     	if (args.length!=1 || !args[0].trim().endsWith(".properties"))
-		{
-			System.out.println("Arguments : [1] - Path to config.properties");
-			System.exit(0);
-		}
+	{
+	   System.out.println("Arguments : [1] - Path to config.properties");
+	   System.exit(0);
+	}
     	String propertiesPath = args[0];
-    	
-        KafkaUploader uploader = new KafkaUploader(propertiesPath);
+    	KafkaUploader uploader = new KafkaUploader(propertiesPath);
         uploader.start();
     }
 
@@ -130,7 +128,7 @@ public class KafkaUploader
     	
 	}
 
-	private static boolean mustBeUploaded(File file) 
+    private static boolean mustBeUploaded(File file) 
     {
         String name = file.getName().toLowerCase();
         return !name.endsWith(".ignore") && !name.endsWith(".uploaded");
@@ -139,28 +137,31 @@ public class KafkaUploader
     private static void waitForFileCopy(File file) throws InterruptedException 
     {
         long size = -1;
-        while (true) {
+        while (true) 
+	{
             long newSize = file.length();
             if (newSize == size) break;
             size = newSize;
             Thread.sleep(500);
         }
     }
-	public void stop() 
-	{
-	    try {
-	        if (watchService != null) {
-	            watchService.close(); 
-	        }
-	    } catch (IOException e) {
+	
+    public void stop() 
+    {
+	try 
+        {
+	   if (watchService != null) {
+	       watchService.close(); 
+	   }
+	} catch (IOException e) {
 	        System.err.println("Error al cerrar WatchService: " + e.getMessage());
-	    }
+	}
 
-	    if (producer != null) {
-	        producer.flush();  
-	        producer.close(); 
-	    }
-
-	    System.err.println("Closing KafkaLocalUploader");
+	if (producer != null) 
+        {
+	   producer.flush();  
+	   producer.close(); 
+	 }
+	 System.err.println("Closing KafkaLocalUploader");
 	}
 }
