@@ -3,7 +3,7 @@
 
 A Java-based tool to **monitor a local directory** and **upload new files to an Apache Kafka topic**, encoding them in Base64.
 
-## 📦 Features
+## Features
 
 - Watches a local folder for new file creations.
 - Encodes file content as Base64 and sends to a Kafka topic.
@@ -59,7 +59,7 @@ java -jar KafkaUploader.jar /path/to/config.properties
 
 ---
 
-## 🧼 Shutdown & Cleanup
+##  Shutdown & Cleanup
 
 - App listens for shutdown signals (e.g., Ctrl+C).
 - Ensures the Kafka producer and watcher service are gracefully closed.
@@ -67,7 +67,7 @@ java -jar KafkaUploader.jar /path/to/config.properties
 
 ---
 
-## 🚫 Ignored Files
+##  Ignored Files
 
 The following files are skipped:
 
