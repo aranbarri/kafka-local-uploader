@@ -9,8 +9,6 @@ A Java-based tool to **monitor a local directory** and **upload new files to an 
 - Encodes file content as Base64 and sends to a Kafka topic.
 - Automatically renames files after upload (optional).
 - Ignores `.ignore` and `.uploaded` files.
-- Graceful shutdown handling.
-
 ---
 
 ## 🚀 Getting Started
