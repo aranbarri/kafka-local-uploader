@@ -124,9 +124,8 @@ public class KafkaUploader
             }
         }
 
-        System.out.println("Exiting main thread.");
-    	
-	}
+	System.out.println("Exiting main thread.");
+    }
 
     private static boolean mustBeUploaded(File file) 
     {
@@ -163,5 +162,5 @@ public class KafkaUploader
 	   producer.close(); 
 	 }
 	 System.err.println("Closing KafkaLocalUploader");
-	}
+    }
 }
